@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+  }
+  
+  /* Style the header */
+  .header {
+    margin-top: 15px;
+    grid-area: 1 ;
+    background-color: rgb(183, 171, 203);
+    border-radius: 20px;
+    width: max-content;
+    padding: 10px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    border: solid black 10px;
+    margin-bottom: 5px;
+
+  }
+  
+  /* The grid container */
+  .grid-container {
+    display: grid;
+    grid-template-areas: 
+      'header header header header header header' 
+      'left left middle middle right right' 
+      'footer footer footer footer footer footer';
+    /* grid-column-gap: 10px; - if you want gap between the columns */
+  } 
+  
+  .left,
+  .middle,
+  .right {
+    padding: 10px;
+    height: 450px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Style the left column */
+  .left {
+    grid-area: left;
+  }
+  
+  /* Style the middle column */
+  .middle {
+    grid-area: middle;
+  }
+  
+  /* Style the right column */
+  .right {
+    grid-area: right;
+  }
+  
+  /* Style the footer        === NO BGCOLOR ANYMORE */
+  .footer {
+    grid-area: footer;
+    padding: 30px;
+    text-align: center;
+  }
+
+
+  .swipeButton {
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    border-width: 0px;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1px;
+}
+
+ .addbutton{
+    background-color: blue;
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border-width: 0px;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+ }
+
+img{
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+}
+
+
+div .left {
+  color: black;
+  background-color: rgb(183, 171, 203);
+  height: max-content;
+  border: solid black 10px;
+  border-radius: 20px;
+  width: 300px;
+}
+div .right {
+  color: black;
+  background-color: rgb(183, 171, 203);
+  height: max-content;
+  border: solid black 10px;
+  border-radius: 20px;
+  width: 300px;
+
+}
+div .middle {
+  margin-left: -20px;
+  color: black;
+  background-color: rgb(183, 171, 203);
+  height: max-content;
+  border: solid black 10px;
+  border-radius: 20px;
+  width: 300px;
+  margin-right: 10px;
+
+}
+
+.add {
+  font-size: medium;
+}
