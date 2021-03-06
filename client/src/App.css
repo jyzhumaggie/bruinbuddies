@@ -1,0 +1,28 @@
+
+.App {
+  text-align: center;
+  justify-content: center;
+}
+
+body {
+  background-image: url(./img/bgBuddies.png);
+  background-size: center;
+  background-position: center 40px;
+}
+
+.title {
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 5px 5px 0px 0px
+}
+
+.container {
+  margin: 50px auto 0px;
+  /* margin: 0px auto 0; */
+  background-color: black;
+  color: white;
+  width: 450px;
+  padding: 0;
+  min-height: 300px;
+  border-radius: 5px;
+}
