@@ -5,7 +5,6 @@ import './Nav.css';
 const Nav = () => {
     return (
         <nav>
-            {/* <h2>BruinBuddies</h2> */}
             <ul>
                 <li className="bruinBuddiesIcon">
                     <Link to="/">BruinBuddies</Link>

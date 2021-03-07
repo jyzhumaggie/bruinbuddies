@@ -12,6 +12,7 @@ import UserNav from './components/NavBar/UserNav';
 
 import PersonalInfo from './components/PersonalInfo/PersonalInfo';
 import PostTimeline from './components/PostTimeline/PostTimeline';
+import Auth from './components/Auth/Auth';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                         <Route exact path = '/suggestion' component = { Suggestion } /> 
                         <Route exact path = '/personalinfo' component = {PersonalInfo} />
                         <Route exact path = '/posts' component = {PostTimeline} />
+                        <Route exact path = '/auth' component = {Auth} />
                     </div>
                 </Switch> 
             </div> 
