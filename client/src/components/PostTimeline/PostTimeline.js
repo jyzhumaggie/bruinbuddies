@@ -22,7 +22,7 @@ const PostTimeline = () => {
     return (
 
         <Container maxWidth="lg">
-            <AppBar className={classes.appBar} position="static" color="black">
+            <AppBar className={classes.appBar} position="static" >
                 <Typography className={classes.heading} variant="h2" align="center">Feeds</Typography>
                 {/* //text element */}
             </AppBar>
