@@ -7,7 +7,6 @@ import Home from './components/Home';
 import SignupForm from './components/SignupLoginForm/Form';
 import LoginForm from './components/SignupLoginForm/LoginForm';
 import Suggestion from './components/Suggestion/Suggestion'
-import UserNav from './components/NavBar/UserNav';
 
 
 import PersonalInfo from './components/PersonalInfo/PersonalInfo';
@@ -19,13 +18,12 @@ function App() {
     return ( 
         <BrowserRouter >
             <div className = "App" >
-                <Route path = "/(register|login|info|)" component = { Nav }/> 
-                <Route path = "/(suggestion|personalinfo|posts)" component = { UserNav }/>
-                
+                {/* <Route path = "/(register|login|info|auth)" component = { Nav }/>  */}
+                {/* <Route path = "/(suggestion|personalinfo|posts|auth)" component = { UserNav }/> */}
+                <Nav />
                 <Switch >
                     <div>
                         <Route exact path = "/" component = { Home } /> 
-                        <Route exact path = "/info" component = { Home }/> 
                         <Route exact path = "/register" component = { SignupForm }/> 
                         <Route exact path = "/login" component = { LoginForm } /> 
                         <Route exact path = '/suggestion' component = { Suggestion } /> 

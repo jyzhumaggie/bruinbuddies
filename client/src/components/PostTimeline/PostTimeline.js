@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import NewForm from '../NewForm/NewForm';
+import React, { useState, useEffect } from 'react';
+import PostForm from '../PostForm/PostForm';
 import Posts from '../Posts/Posts';
 
 import { getPosts } from '../../actions/posts';
@@ -12,10 +12,12 @@ const PostTimeline = () => {
     const classes = useStyles();
     const dispatch = useDispatch(getPosts()); //hook
     
+    const [currentId, setCurrentId] = useState(null);
+
     // where to dispatch the action, inside useEffect
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch]); // dependency array
+    }, [dispatch, currentId]); // dependency array
     
     return (
 
@@ -28,10 +30,10 @@ const PostTimeline = () => {
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
-                            <Posts />
+                            <Posts setCurrentId={setCurrentId} />
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <NewForm />
+                            <PostForm currentId={currentId} setCurrentId={setCurrentId} />
                         </Grid>
     
                     </Grid>
