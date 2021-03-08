@@ -26,7 +26,7 @@ const Post = ({ post, setCurrentId }) => {
                 </Button>
             </div>
             <CardContent className={classes.cardContents}>
-                <Typography className={classes.details}>{post.creater}</Typography>
+                <Typography className={classes.details}>{post.name}</Typography>
                 <Typography className={classes.details2}>{moment(post.createdAt).fromNow()}</Typography>
                 <Typography className={classes.title}>{post.title}</Typography>
                 <Typography className={classes.message} >{post.message}</Typography>
