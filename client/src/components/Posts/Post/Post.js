@@ -19,28 +19,27 @@ const Post = ({ post, setCurrentId }) => {
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
             <div className={classes.overlay2}>
                 <Button 
-                    style={{color: "white"}} 
+                    style={{color: "white"}}
                     size="small" 
                     onClick={() => {setCurrentId(post._id)}}>
                     <MoreHorizIcon fontSize="default" />
                 </Button>
             </div>
-            <div className={classes.details}>
+            <CardContent className={classes.cardContents}>
+                <Typography className={classes.details}>{post.creater}</Typography>
+                <Typography className={classes.details2}>{moment(post.createdAt).fromNow()}</Typography>
+                <Typography className={classes.title}>{post.title}</Typography>
+                <Typography className={classes.message} >{post.message}</Typography>
+
                 <Typography variant="body2" style={{color: "white"}}>{post.tags.map((tag) => `#${tag} `)}</Typography>
 
-            </div>
-            <div className={classes.overlay}>
-                <Typography>{post.creater}</Typography>
-                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
-            </div>
-            <CardContent>
-                <Typography className={classes.title} style={{color: "white"}} variant="h5" gutterBottom>{post.title}</Typography>
             </CardContent>
-            <Typography className={classes.details} style={{color: "white"}} variant="h6" gutterBottom>{post.message}</Typography>
+
+
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="secondary" onClick={()=> {dispatch(likePost(post._id))}}>
                     <ThumbUpAltIcon fontSize="small" />
-                    Like
+                    Like&nbsp;
                     {post.likeCount}
                 </Button>
                 <Button size="small" color="secondary" onClick={()=> {dispatch(deletePost(post._id))}}>
