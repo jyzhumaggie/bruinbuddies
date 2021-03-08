@@ -3,23 +3,40 @@ import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from "@
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import makeStyles from './styles';
 import Input from './Input';
-
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import Icon from './Icon';
 import { GoogleLogin } from 'react-google-login';
+import { signin, signup } from '../../actions/auth';
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+
 const Auth = () => {
     const classes = makeStyles();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false)
-    
-    const dispatch = useDispatch();
+    const [formData, setformData] = useState(initialState);
 
-    const handleSubmit = () => {
 
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(formData);
+        if (isSignup) {
+            dispatch(signup(formData, history));
+        } else {
+            dispatch(signin(formData, history));
+        }
     };
-    const handleChange = () => {
 
+
+
+    const handleChange = (e) => {
+        setformData({ ...formData, [e.target.name]: e.target.value })
     };
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -32,6 +49,7 @@ const Auth = () => {
         const token = res?.tokenId;
         try {
             dispatch({ type: 'AUTH', data: { result, token }});
+            history.push("/suggestion");
         } catch (error) {
             console.log(error);
         }
@@ -58,10 +76,8 @@ const Auth = () => {
                         }
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
-                        { isSignup && <Input name="confirmPassword" label="Repeat Password" handleSubmit={handleChange} type="password" />}
-
+                        { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />}
                     </Grid>
-                    
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? "Sign Up" : "Sign In" }
                     </Button>

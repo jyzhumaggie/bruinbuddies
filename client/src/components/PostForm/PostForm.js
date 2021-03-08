@@ -1,37 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import makeStyles from './styles';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 
-import { useDispatch } from 'react-redux';
-import { createPost } from '../../actions/posts';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, updatePost } from '../../actions/posts';
 
-const NewForm = () => {
-    const [postData, setPostData] = useState({
-        creater: "",
-        title: "",
-        message: "",
-        tags: "",
-        selectedFile: "",
-    });
+
+const PostForm = ({ currentId, setCurrentId }) => {
+    const [postData, setPostData] = useState({ creater: "", title: "", message: "", tags: "", selectedFile: "",});
+    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId ): null ); 
 
     const classes = makeStyles();
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if(post) setPostData(post);
+    }, [post])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPost(postData));
+        if (currentId) {
+            dispatch(updatePost(currentId, postData));
+            
+        } else {
+            dispatch(createPost(postData));
+                
+        }
+        clear();
     }
 
     const clear = () => {
-
+        setCurrentId(null);
+        setPostData({ creater: '', title:'', message:'', tags:'', selectedFile:'' });
     }
 
     return ( 
         <Paper className={classes.Paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form} `} onSubmit={handleSubmit}>
-                <Typography variant="h6"> Creating new post</Typography>
+                <Typography variant="h6"> {currentId ? 'Editing' : 'Creating'} a post</Typography>
                     <TextField name="creater" variant="outlined" label="Creater" fullWidth value={postData.creater} onChange={(e) => setPostData({ ...postData, creater: e.target.value })} />
                     <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                     <TextField name="message" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
@@ -50,4 +57,4 @@ const NewForm = () => {
     );
 };
 
-export default NewForm;
+export default PostForm;

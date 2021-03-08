@@ -4,25 +4,32 @@ h2 {
 
 nav {
     display: flex;
-    justify-content: space-between;
+
     background-color: black;
     padding: 5px 20px;
     color: white;
     margin: -10px;
+    
 }
 
 nav ul {
     list-style: none;
+    
+}
+
+.links {
+    list-style: none;
+    margin-top: 30px;
 }
 
 nav li {
     display: inline-flex;
-    justify-content: center;
+
 }
 /* anchor element */
 nav a {
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-size: larger;
     font-weight: bold;
     color: white;
@@ -31,4 +38,21 @@ nav a {
 .bruinBuddiesIcon {
     margin-left: -20px;
     font-size: xx-large;
+    margin-right: 320px;
+}
+
+Nav .fixedButton1 {
+    position:sticky;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-top: 23px;
+}
+
+Nav .fixedButton2 {
+    position:sticky;
+    justify-content: center;
+    margin-left: 400px;
+    margin-top: 10px;
+    padding-top: 23px;
 }

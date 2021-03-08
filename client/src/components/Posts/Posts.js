@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 import makeStyles from './styles';
 
-const Posts = () => {
+const Posts = ({ setCurrentId }) => {
     const posts = useSelector((state) => state.posts);  // reducers/index.js: combineReducers posts
     const classes = makeStyles();
 
@@ -19,7 +19,7 @@ const Posts = () => {
                 {/* JS logic */}
                 {posts.map((post) => (
                         <Grid key={post._id} item sm={6}>
-                            <Post post={post} />
+                            <Post post={post} setCurrentId={setCurrentId} />
                         </Grid>
                     ))}
             </Grid>
