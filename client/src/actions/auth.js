@@ -6,7 +6,7 @@ import * as api from '../api/index';
 export const signin = (formData, history) => async (dispatch) => {
     try {
         //log in user
-        history.push('/');
+        history.push('/auth');
     }
     catch (error) {
         console.log(error);
@@ -16,7 +16,7 @@ export const signin = (formData, history) => async (dispatch) => {
 
 export const signup = (formData, history) => async (dispatch) => {
     try {
-        history.push('/personalinfo');
+        history.push('/auth');
     }
     catch (error) {
         console.log(error);

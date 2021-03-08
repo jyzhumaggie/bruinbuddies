@@ -1,11 +1,10 @@
+import { colors } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles({
     media: {
         height: 0,
         paddingTop: '56.25%',
-
-        // backgroundBlendMode: 'darken',
       },
       border: {
         border: 'solid',
@@ -22,36 +21,41 @@ export default makeStyles({
         position: 'relative',
         backgroundColor: '#000000',
       },
-      overlay: {
-        fontSize: 'small',
-        position: 'absolute',
-        bottom: '70px',
-        left: '20px',
-        color: 'white',
-        textAlign: 'left',
-      },
       overlay2: {
         position: 'absolute',
-        top: '20px',
-        right: '20px',
-        color: 'white',
+        top: '10px',
+        right: '5px',
       },
-      grid: {
-        display: 'flex',
-      },
+
       details: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        margin: '10px 20px',
-        position: 'absolute',
-        bottom: '30px',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        position: 'inherit',
+        margin: '10px 0px 0px'
+      },           
+      details2: {
+        fontSize: '10px',
+      },      
+      message: {
+        margin: '0px 10px 20px'
       },
       title: {
-        padding: '0 16px',
+        padding: '15px 20px 0px ',
+        fontWeight: 'bolder',
+        fontSize: 'larger'
       },
       cardActions: {
-        padding: '50px 16px 8px 16px',
-        display: 'flex',
+        // padding: '50px 16px 8px 16px',
+        // display: 'flex',
         justifyContent: 'space-between',
       },
+
+      cardContents: {
+        // alignItems: 'left',
+        margin: '0px 10px',
+        textAlign: "left",
+        color: 'white',
+        
+      }
+
 });

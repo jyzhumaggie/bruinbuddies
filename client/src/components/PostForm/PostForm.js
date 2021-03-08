@@ -25,7 +25,6 @@ const PostForm = ({ currentId, setCurrentId }) => {
             
         } else {
             dispatch(createPost(postData));
-                
         }
         clear();
     }
@@ -42,7 +41,7 @@ const PostForm = ({ currentId, setCurrentId }) => {
                     <TextField name="creater" variant="outlined" label="Creater" fullWidth value={postData.creater} onChange={(e) => setPostData({ ...postData, creater: e.target.value })} />
                     <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                     <TextField name="message" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
-                    <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
+                    <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
                     <div className={classes.fileInput}>
                         <FileBase
                             type="file"
