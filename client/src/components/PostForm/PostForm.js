@@ -34,6 +34,17 @@ const PostForm = ({ currentId, setCurrentId }) => {
         setPostData({  title:'', message:'', tags:'', selectedFile:'' });
     }
 
+
+    if (!user?.result?.name) {
+        return (
+            <Paper className={classes.paper}>
+                <Typography variant="h6" align="center" style={{ fontWeight: 'bolder' }}>
+                    Please Sign In 
+                </Typography>
+            </Paper>
+        )
+    }
+
     return ( 
         <Paper className={classes.Paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form} `} onSubmit={handleSubmit}>

@@ -5,6 +5,8 @@ import makeStyles from './styles';
 import './Nav.css';
 import { useDispatch } from 'react-redux';
 import { LOGOUT } from '../../constants/actionTypes';
+import decode from 'jwt-decode';
+
 const Nav = () => {
     const classes = makeStyles();
 
@@ -14,16 +16,22 @@ const Nav = () => {
     const history = useHistory();
     const location = useLocation();
 
+    
+
     useEffect(() => {
         const token = user?.token;
-        
+        if (token) {
+            const decodedToken = decode(token);
+            
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
         //JWT
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
 
 
     const logout = () => {
-        dispatch({ type: "LOGOUT"});
+        dispatch({ type: LOGOUT});
         history.push('/');
         setUser(null);
     }
