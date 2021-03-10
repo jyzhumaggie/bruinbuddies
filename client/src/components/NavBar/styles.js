@@ -61,7 +61,7 @@ export default makeStyles((theme) => ({
     gridColumnStart: '1',
     color: 'white',
     textDecoration: 'none',
-    fontSize: '45px',
+    fontSize: '200%',
     fontWeight: 'bolder',
     marginLeft: '0.5vw',
   },
