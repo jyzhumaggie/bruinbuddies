@@ -3,18 +3,67 @@ import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
   appBar: {
-    borderRadius: 15,
-    margin: '30px 0',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    display: 'grid',
+    // flexDirection: 'row',
+    gridTemplateColumns: '30% 20% auto 8% 8% 8% 8% 8%',
+    columnGap: '1vw',
     alignItems: 'center',
-    padding: '10px 50px',
+
+    padding: '1.8vw 1vw',
+    backgroundColor: "black",
+  },
+  personalinfo: {
+    gridColumnStart: '3',
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '2.5vw',
+    fontWeight: 'bolder',
+  },
+  posts: {
+    gridColumnStart: '4',
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '2.5vw',
+    fontWeight: 'bolder',
+  },
+  search: {
+    gridColumnStart: '5',
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '2.5vw',
+    fontWeight: 'bolder',
+  },
+  profilePage: {
+    gridColumnStart: '6',
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '2.5vw',
+    fontWeight: 'bolder',
+  },
+  button: {
+    marginLeft: '1.5vw',
+    gridColumnStart: '5',
+    color: 'white',
+    fontSize: '1vw',
+    fontWeight: 'bold',
+    padding: '0.5vw'
+  },
+  button2: {
+    marginLeft: '60vw',
+    marginRight: '1vw',
+    gridColumnStart: '6',
+    color: 'white',
+    fontSize: '1.5vw',
+    fontWeight: 'bold',
+    padding: '0.8vw 0.6vw'
   },
   heading: {
-    color: 'rgba(0,183,255, 1)',
+    gridColumnStart: '1',
+    color: 'white',
     textDecoration: 'none',
-    
+    fontSize: '45px',
+    fontWeight: 'bolder',
+    marginLeft: '0.5vw',
   },
   image: {
     marginLeft: '0px',

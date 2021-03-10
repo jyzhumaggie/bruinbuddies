@@ -1,10 +1,23 @@
 .wrapper {
-    margin-top: 8px;
+    margin-top: 10vw;
     padding: 5px 20px;
+    background-color: rgba(91, 77, 142, 0.502);
+    font-weight: bold;
+    font-size: large;
+    color: white;
 }
 
 .wrapper fieldset {
-    margin: 20px 0;
+    margin: 20px 5px;
+    border: solid ;
+    border-color: rgb(201, 195, 215);
 }
 
-  
+input {
+    margin-top: 0px;
+}
+
+p {
+    margin-top: 4vh;
+    margin-bottom: 1vh;
+}

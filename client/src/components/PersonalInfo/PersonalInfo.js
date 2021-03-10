@@ -3,15 +3,15 @@ import './PersonalInfo.css';
 
 const formReducer = (state, event) => {
 	if(event.reset){
-	return{
-		hobbies: '',
-		name: '',
-		year: '',
-		major: '',
-		classes: '',
-		bio: '',
-		'night-study': false,
-	}
+		return{
+			hobbies: '',
+			name: '',
+			year: '',
+			major: '',
+			classes: '',
+			bio: '',
+			'night-study': false,
+		}
 	}
 	return{
 	...state,
@@ -46,6 +46,13 @@ function PersonalInfo() {
 		});
 	}
 
+	// get the current user from localStorage so that we can directly change its values
+    const user = JSON.parse(localStorage.getItem('profile'));
+	if (user?.result?.name) {
+		console.log(user?.result?.email);
+		console.log(user?.result?.name);
+		console.log(user?.result?.hobbies);
+	} 
 
 	return (
 		<div className="wrapper">
@@ -70,6 +77,16 @@ function PersonalInfo() {
 				<label>
 					<p>Year</p>
 					<select name="year" onChange={handleChange} value={formData.year || ''}>
+					<option value="">--Please choose an option--</option>
+					<option value="freshman">Freshman</option>
+					<option value="sophomore">Sophomore</option>
+					<option value="junior">Junior</option>
+					<option value="senior">Senior</option>
+					</select>
+				</label>
+				<label>
+					<p>Cat or Dog?</p>
+					<select name="catOrDog" onChange={handleChange} value={formData.year || ''}>
 					<option value="">--Please choose an option--</option>
 					<option value="freshman">Freshman</option>
 					<option value="sophomore">Sophomore</option>
