@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import PostMessage from '../models/postMessage.js';
 const router = express.Router();
 
-export const getPost = async(req, res) => {
+export const getPost = async (req, res) => {
     try { // finding all data that uses the PostMessage model, takes time --> async
         const postMessages = await PostMessage.find();
         res.status(200).json(postMessages); // 200 everything went aight
@@ -29,7 +29,7 @@ export const createPost = async(req, res) => {
 }
 
 
-export const updatePost = async(req, res) => {
+export const updatePost = async (req, res) => {
     const { id: _id } = req.params;
     // const { title, message, creater, selectedFile, tags } = req.body;
     const post = req.body;
