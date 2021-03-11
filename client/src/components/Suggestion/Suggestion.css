@@ -10,3 +10,12 @@
 .suggestionDiv {
   margin: 10vh;
 }
+
+.titleBoxes {
+  margin-top: 15vh;
+  color: white ;
+  font-weight: bolder;
+  font-size: 3vw;
+  background-color: rgba(78, 76, 126, 0.838);
+  border-radius: 10px;
+}
