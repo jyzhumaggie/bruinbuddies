@@ -1,6 +1,5 @@
-import React, { useReducer, useState, useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createPost, updatePost, getPosts } from '../../actions/posts';
+import React, {  useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './PersonalInfo.css';
 import { getUsers, updateUser } from '../../actions/users';
 import FileBase from 'react-file-base64';
@@ -30,16 +29,17 @@ const PersonalInfo = () => {
 	} 
 	console.log(formData.result);
 	const currentId = user?.result?._id;
+	
 	useEffect(() => {
 		if (user) setFormData(user);
 	}, []);
 
 
 
-	const handleSubmit = (event) => {
+	const handleSubmit =  (event) => {
 		event.preventDefault();
-			console.log(formData);
-			dispatch(updateUser(currentId, { ...formData }));
+		console.log(formData);
+		dispatch(updateUser(currentId, { ...formData }));
 		
 		// setSubmitting(true);
 		setTimeout(() => {
