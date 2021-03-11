@@ -1,49 +1,64 @@
-import React, { useReducer, useState, useRef } from 'react';
+import React, { useReducer, useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPost, updatePost, getPosts } from '../../actions/posts';
 import './PersonalInfo.css';
+import { getUsers } from '../../actions/users';
 
-const formReducer = (state, event) => {
-	if(event.reset){
-		return{
-			hobbies: '',
-			name: '',
-			year: '',
-			major: '',
-			classes: '',
-			bio: '',
-			'night-study': false,
-		}
-	}
-	return{
-	...state,
-	[event.name]: event.value
-	}
-}
 
-function PersonalInfo() {
-	const [formData, setFormData] = useReducer(formReducer, {
-		count: 100,
-	});
+const PersonalInfo = () => {
+	// const [formData, setFormData] = useReducer(formReducer, {
+	// 	count: 100,
+	// });
+	const [formData, setFormData] = useState({ 
+		bio: "", 
+		major: "", 
+		year: "", 
+		hobbies: "", 
+		catDog: "", 
+		nightOrMorning: "", 
+		groupSize: "",
+	})
+	const dispatch = useDispatch(getUsers());
+
 	const [submitting, setSubmitting] = useState(false);
 	const [file, setFile] = useState(null);
-	const handleSubmit = event => {
-	event.preventDefault();
-	//alert('You have submitted the form.')
-	setSubmitting(true);
+
+	const [currentId, setCurrentId] = useState(null);
+    useEffect(() => {
+        dispatch(getUsers());
+    }, [dispatch]);
 	
-	setTimeout(() => {
-		setSubmitting(false);
-		setFormData({
-			reset: true
-			})
-		},3000);
+	const handleSubmit = event => {
+		event.preventDefault();
+		setSubmitting(true);
+		setTimeout(() => {
+			setSubmitting(false);
+			setFormData({
+				reset: true
+				})
+			},3000);
+			alert('You have submitted the form.')
 	}
+	// 	if (currentId) {
+    //         dispatch(updatePost(currentId, { ...formData, name: user?.result?.name }));
+            
+    //     } else {
+    //         dispatch(createPost({ ...formData, name: user?.result?.name }));
+    //     }
+	
+
+		
+
+
+	
+	
 
 	const handleChange = event => {
-	const isCheckbox = event.target.type === 'checkbox';
-	setFormData({
-		name: event.target.name,
-			value: isCheckbox ? event.target.checked : event.target.value,
-		});
+		const isCheckbox = event.target.type === 'checkbox';
+		setFormData({
+			name: event.target.name,
+				value: isCheckbox ? event.target.checked : event.target.value,
+			});
 	}
 
 	// get the current user from localStorage so that we can directly change its values
@@ -52,6 +67,7 @@ function PersonalInfo() {
 		console.log(user?.result?.email);
 		console.log(user?.result?.name);
 		console.log(user?.result?.hobbies);
+		console.log(user?.result?._id);
 	} 
 
 	return (

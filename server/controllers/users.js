@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'; //hash
 import jwt from 'jsonwebtoken'; //store the user in a browser on a website
+import mongoose from 'mongoose';
 import User from '../models/user.js';
 
 
@@ -40,3 +41,22 @@ export const signup = async (req, res) => {
         res.status(500).json({ message: "Something went wrong!" });
     }
 };
+
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+export const updateUser = async (req, res) => {
+    const { id: _id } = req.params;
+    const user = req.body;
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No post with current ID`);
+
+    const updatedUser = await User.findByIdAndUpdate(_id, { ...user, _id}, { new: true });
+    res.json(updatedUser);
+}
