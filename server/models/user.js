@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema({
     catDog: { type: String, required: false },
     nightOrMorning: { type: String, required: false },
     groupSize: { type: String, required: false },
+    friends: {
+        type: [String],
+        default: [],
+    },
 });
 
 export default mongoose.model('User', userSchema);

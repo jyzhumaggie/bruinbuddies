@@ -15,6 +15,7 @@ const PersonalInfo = () => {
 		catDog: "", 
 		nightOrMorning: "", 
 		groupSize: "",
+		selectedFile: "",
 	})
 
 	const dispatch = useDispatch();
@@ -78,8 +79,13 @@ const PersonalInfo = () => {
 			<form onSubmit={handleSubmit}>
 				<fieldset>
 					<p>Upload a display picture</p>
-					<input type = "file" required multiple={false} onDone={(base64) => setFormData({ ...formData, selectedFile: base64 })}/>
-					<label>
+					<FileBase
+                            type="file"
+                            required
+                            multiple={false}
+                            onDone={({base64}) => setFormData({ ...formData, selectedFile: base64 })}
+                            />					
+				<label>
 					<p>Name</p>
 					<input name="name" required label="Name" onChange={(e) => setFormData({ ...formData, name: e.target.value })} value={formData.name} />
 				</label>
