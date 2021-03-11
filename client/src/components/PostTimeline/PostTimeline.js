@@ -8,6 +8,8 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import useStyles from "./styles";
 import { useDispatch } from 'react-redux';  //allow dispatch an action: HOOK
 
+
+
 const PostTimeline = () => {
     const classes = useStyles();
     const dispatch = useDispatch(getPosts()); //hook
@@ -18,6 +20,7 @@ const PostTimeline = () => {
     useEffect(() => {
         dispatch(getPosts());
     }, [dispatch, currentId]); // dependency array
+    
     
     return (
 

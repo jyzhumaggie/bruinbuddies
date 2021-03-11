@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom'; 
 import './Suggestion.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../actions/users';
+import SuggestionBox from '../SuggestedBoxes/SuggestedBox';
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import makeStyles from './styles';
 
 function Person(name, major, description, url){
   return(
@@ -32,90 +37,196 @@ function Tracker(pos){
     
 }
 
-
-class Suggestion extends React.Component{
-    constructor(props){
-        super(props);
-       this.state = {i: 0, positions: []};
-       
-       this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick(){
-        this.setState(prevState => ({
-            i: prevState.i+3,
-        }));
-    }
     
-    render(){
-        if(this.state.i - array.length === 0)
-        {
-            this.state.i = 0;
+
+// where to dispatch the action, inside useEffect
+
+
+
+
+
+const Suggestion = () => {
+
+    const classes = makeStyles();
+
+    const dispatch = useDispatch(getUsers()); //hook
+
+    const [currentId, setCurrentId] = useState(null);
+    useEffect(() => {
+        dispatch(getUsers());
+    }, [dispatch, currentId]); // dependency array
+
+
+    const user = JSON.parse(localStorage.getItem('profile'));
+    console.log(user?.result?.name);
+    const allUsers = useSelector((state) => state.posts);  // reducers/index.js: combineReducers posts
+    console.log(allUsers[1]?.major);
+
+
+    // allUsers.map((one) => {
+    //     console.log(one?.email);
+    //     if (user?.result?.email === one?.email) {
+    //         console.log("i am u");
+    //     }
+    // })
+
+    console.log(allUsers);
+    const otherUsers = allUsers.filter( (one) => {
+        if (user?.result?.email === one?.email) {
+            console.log("i am u");
+            return null;
+        } else { 
+            return one;
         }
-        else if(this.state.i - array.length === 1)
-        {
-            this.state.i = 1;
+    } );
+    console.log(otherUsers);
+    console.log(user?.result?.name);
+    console.log("Here");
+
+    const query = 'ee';
+    const suggestUsers = ( otherUsers, query ) => {
+        if (!query) {
+            return null;
+        } else {
+            return otherUsers.filter((oneUser) => {
+                const match = oneUser?.major.toLowerCase();
+                return match.includes(query.toLowerCase());
+            })
         }
-        else if(this.state.i - array.length === 2)
-        {
-            this.state.i = 2;
-        }
-        this.state.positions = Tracker(this.state.i);
- return(
-        <div className="grid-container">
-            <div className="header">
-                <h2>Recommendation For You</h2>
+    }
+
+
+    const suggestedUsers = suggestUsers(otherUsers, query);
+
+    console.log(suggestedUsers);
+    return (
+        <>
+            <div>
+                <p className="suggestionTitle"> Suggestions For You</p>
+
+                <div className="suggestionDiv">
+                    <Grid className={classes.container} container alignItems="stretch" spacing={4}>
+                {
+
+                    suggestedUsers.map((suggestedUser) => (
+                        <Grid item sm={6}>
+                            <SuggestionBox suggestedUser={suggestedUser} />
+                        </Grid>
+                     ))}
+                </Grid>
+
+                </div>
+
             </div>
+        </>
+    )
+}
+
+
+
+
+export default Suggestion
+
+
+
+
+
+
+
+
+// class Suggestion extends React.Component{
+
+
+
+    
+//     constructor(props){
+//         super(props);
+//        this.state = {i: 0, positions: []};
+       
+//        this.handleClick = this.handleClick.bind(this);
+//     }
+
+//     handleClick(){
+//         this.setState(prevState => ({
+//             i: prevState.i+3,
+//         }));
+//     }
+    
+//     render(){
+//         if(this.state.i - array.length === 0)
+//         {
+//             this.state.i = 0;
+//         }
+//         else if(this.state.i - array.length === 1)
+//         {
+//             this.state.i = 1;
+//         }
+//         else if(this.state.i - array.length === 2)
+//         {
+//             this.state.i = 2;
+//         }
+//         this.state.positions = Tracker(this.state.i);
+//  return(
+//         <div className="grid-container">
+//             <div className="header">
+//                 <h2>Recommendation For You</h2>
+//             </div>
             
-            <div className="left" >
-                Name: {array[this.state.positions[0]][0]}
-                <div>
-                    Major: {array[this.state.positions[0]][1]}
-                </div>
-                <div>
-                    Decription: {array[this.state.positions[0]][2]}
-                </div>
-                <img src = {array[this.state.positions[0]][3]}></img>
-                <br />
-                <button className="add">add</button>
-            </div>
+//             <div className="left" >
+//                 Name: {array[this.state.positions[0]][0]}
+//                 <div>
+//                     Major: {array[this.state.positions[0]][1]}
+//                 </div>
+//                 <div>
+//                     Decription: {array[this.state.positions[0]][2]}
+//                 </div>
+//                 <img src = {array[this.state.positions[0]][3]}></img>
+//                 <br />
+//                 <button className="add">add</button>
+//             </div>
 
-            <div className="middle" >
-                Name: {array[this.state.positions[1]][0]}
-            <div>
-                Major: {array[this.state.positions[1]][1]}
-            </div>
-            <div>
-                Decription: {array[this.state.positions[1]][2]}
-            </div>
-                <button>
-                <img src = {array[this.state.positions[1]][3]}></img>
-                </button>
-            </div>  
-
-
-<div className="right" >
-    Name: {array[this.state.positions[2]][0]}
-    <div>
-        Major: {array[this.state.positions[2]][1]}
-    </div>
-    <div>
-        Decription: {array[this.state.positions[2]][2]}
-    </div>
-    <img src = {array[this.state.positions[2]][3]}></img>
-    <br />
-    <button className="add">add</button>
-
-</div>
-
-<div className="footer">
-    <button className="swipeButton" onClick={this.handleClick}>
-        Swipe
-    </button>
-</div>
-</div>);
-}
-}
+//             <div className="middle" >
+//                 Name: {array[this.state.positions[1]][0]}
+//             <div>
+//                 Major: {array[this.state.positions[1]][1]}
+//             </div>
+//             <div>
+//                 Decription: {array[this.state.positions[1]][2]}
+//             </div>
+//                 <button>
+//                 <img src = {array[this.state.positions[1]][3]}></img>
+//                 </button>
+//             </div>  
 
 
-export default Suggestion;
+// <div className="right" >
+//     Name: {array[this.state.positions[2]][0]}
+//     <div>
+//         Major: {array[this.state.positions[2]][1]}
+//     </div>
+//     <div>
+//         Decription: {array[this.state.positions[2]][2]}
+//     </div>
+//     <img src = {array[this.state.positions[2]][3]}></img>
+//     <br />
+//     <button className="add">add</button>
+
+// </div>
+
+// <div className="footer">
+//     <button className="swipeButton" onClick={this.handleClick}>
+//         Swipe
+//     </button>
+// </div>
+// </div>);
+// }
+// }
+
+
+// export default Suggestion;
+
+
+
+
+
+
