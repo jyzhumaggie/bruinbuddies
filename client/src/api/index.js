@@ -31,4 +31,4 @@ export const signUp = (formData) => API.post('/users/signup', formData);
 
 
 export const fetchUsers = () => API.get('/users')
-export const updateUser = (id, user) => API.patch('/users', id, user);
+export const updateUser = (id, user) => API.patch(`/users/${id}`, user);

@@ -6,6 +6,7 @@ export default (users = [], action) => {
             return action.payload;  // because from post action, we are grabbing all of the posts 
                                     // and passing thru the payload
         case UPDATE:
+            console.log(user);
             return users.map((user) => user._id === action.payload._id ? action.payload : user)
 
         default:
