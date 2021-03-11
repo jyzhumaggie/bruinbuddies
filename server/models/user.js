@@ -5,15 +5,16 @@ const userSchema = mongoose.Schema({
     email: { type: String, required: true},
     password: { type: String, required: true},
     id: { type: String },
-    
-    bio: { type: String, required: true },
+    selectedFile: { type: String, required: false},
 
-    major: { type: String, required: true },
-    year: { type: String, required: true },
-    hobbies: { type: String, required: true },
-    catDog: { type: String, required: true },
-    nightOrMorning: { type: String, required: true },
-    groupSize: { type: String, required: true },
+    bio: { type: String, required: false },
+
+    major: { type: String, required: false },
+    year: { type: String, required: false },
+    hobbies: { type: String, required: false },
+    catDog: { type: String, required: false },
+    nightOrMorning: { type: String, required: false },
+    groupSize: { type: String, required: false },
 });
 
 export default mongoose.model('User', userSchema);

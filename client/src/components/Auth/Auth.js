@@ -9,7 +9,8 @@ import Icon from './Icon';
 import { GoogleLogin } from 'react-google-login';
 import { signin, signup } from '../../actions/auth';
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '', selectedFile: '',
+bio: '', major: '', year: '', hobbies: '', catDog: '', nightOrMorning: '', groupSize: '', };
 
 const Auth = () => {
     const classes = makeStyles();
