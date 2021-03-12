@@ -1,0 +1,57 @@
+/
+div {
+    align-items: center;
+    margin-left: 9%;
+}
+.profile {
+    background-color: rgba(100, 85, 153, 0.516);
+    margin-top: 20vh;
+
+    height: min-content;
+    width: min-content;
+    display: grid;
+
+    align-items: center;
+}
+.picture {
+    padding-top: 6vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    align-items: center;
+    margin-left: 0px;
+}
+.profilePic {
+
+    width: 50vh;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    font-size: 8vh;
+    align-content: center;
+    margin-left: -3vw;
+}
+
+h2 {
+    color: white;
+    font-size: large;
+    margin-left: 0px;
+    
+}
+
+.valueFields {
+    color: beige;
+    border: 2px solid rgb(1, 14, 1);
+    padding: 6px;
+    margin-bottom: 6vh;
+    margin-right: 3vw;
+    margin-left: 3vw;
+    background-color: rgb(111, 95, 165);
+}
+
+.body {
+    align-content: center;
+    align-items: center;
+    margin: 0;
+} 
