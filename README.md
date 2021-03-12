@@ -1,6 +1,10 @@
-# temp
+# Bruinbuddies
 
-npm start both server and client
+# Introduction
+A fullstack web application that provides social networking services
 
-go to endpoint /posts 
-submit button works and it uploads data to mangoDB database 
+# Overview
+Open up a terminal and create a directory in which you wish to place Bruinbuddies
+Use `git clone https://github.com/jyzhumaggie/bruinbuddies.git` to clone to repository into your local folder
+In two different terminals, use `cd bruinbuddies/client` and `cd bruinbuddies/server` to enter the two separate sub-folders
+Inside _bruinbuddies/client_ and _bruinbuddies/server_, use `npm start` to start the application
