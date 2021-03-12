@@ -33,8 +33,6 @@ function Tracker(pos){
         else{
             return ([pos, pos+1, pos+2]);
         }
-       
-    
 }
 
     
@@ -63,14 +61,8 @@ const Suggestion = () => {
     console.log(allUsers[1]?.major);
 
 
-    // allUsers.map((one) => {
-    //     console.log(one?.email);
-    //     if (user?.result?.email === one?.email) {
-    //         console.log("i am u");
-    //     }
-    // })
 
-    console.log(allUsers);
+    // console.log(allUsers);
     const otherUsers = allUsers.filter( (one) => {
         if (user?.result?.email === one?.email) {
             console.log("i am u");
