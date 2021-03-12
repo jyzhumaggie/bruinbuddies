@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom'; 
 import './Suggestion.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../actions/users';
 import SuggestionBox from '../SuggestedBoxes/SuggestedBox';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import makeStyles from './styles';
 
 function Person(name, major, description, url){
@@ -33,8 +32,6 @@ function Tracker(pos){
         else{
             return ([pos, pos+1, pos+2]);
         }
-       
-    
 }
 
     
@@ -59,18 +56,13 @@ const Suggestion = () => {
 
     const user = JSON.parse(localStorage.getItem('profile'));
     console.log(user?.result?.name);
+    console.log(user);
     const allUsers = useSelector((state) => state.posts);  // reducers/index.js: combineReducers posts
-    console.log(allUsers[1]?.major);
+    // console.log(allUsers);
 
 
-    // allUsers.map((one) => {
-    //     console.log(one?.email);
-    //     if (user?.result?.email === one?.email) {
-    //         console.log("i am u");
-    //     }
-    // })
-
-    console.log(allUsers);
+ 
+    // console.log(allUsers);
     const otherUsers = allUsers.filter( (one) => {
         if (user?.result?.email === one?.email) {
             console.log("i am u");
@@ -79,44 +71,129 @@ const Suggestion = () => {
             return one;
         }
     } );
-    console.log(otherUsers);
-    console.log(user?.result?.name);
-    console.log("Here");
+    // console.log(otherUsers);
+    // console.log(user?.result?.name);
+    // console.log("Here");
 
-    const query = 'ee';
-    const suggestUsers = ( otherUsers, query ) => {
-        if (!query) {
+
+ /*------------------------filters--------------------------*/
+    const majorQuery = user?.result?.major;
+    console.log(majorQuery); 
+    const suggestUsersMajor = ( otherUsers, majorQuery ) => {
+        if (!majorQuery) {
             return null;
         } else {
+            console.log()
             return otherUsers.filter((oneUser) => {
                 const match = oneUser?.major.toLowerCase();
-                return match.includes(query.toLowerCase());
+                return match.includes(majorQuery.toLowerCase());
             })
         }
     }
+    const suggestedUsersMajor = suggestUsersMajor(otherUsers, majorQuery);
+    console.log(suggestedUsersMajor);
 
 
-    const suggestedUsers = suggestUsers(otherUsers, query);
 
-    console.log(suggestedUsers);
+
+ 
+    const yearQuery = user?.result?.year;
+    const suggestUsersYear = ( otherUsers, yearQuery ) => {
+        if (!yearQuery) {
+            return null;
+        } else {
+            return otherUsers.filter((oneUser) => {
+                const match = oneUser?.year.toLowerCase();
+                return match.includes(yearQuery.toLowerCase());
+            })
+        }
+    }
+    const suggestedUsersYear = suggestUsersYear(otherUsers, yearQuery);
+
+    const petQuery = user?.result?.catDog;
+    const suggestUsersPet = ( otherUsers, petQuery ) => {
+        if (!petQuery) {
+            return null;
+        } else {
+            return otherUsers.filter((oneUser) => {
+                const match = oneUser?.catDog.toLowerCase();
+                return match.includes(petQuery.toLowerCase());
+            })
+        }
+    }
+    const suggestedUsersPet = suggestUsersPet(otherUsers, petQuery);
+
+    const studyHourQuery = user?.result?.catDog;
+    const suggestUsersStudyHour = ( otherUsers, studyHourQuery ) => {
+        if (!studyHourQuery) {
+            return null;
+        } else {
+            return otherUsers.filter((oneUser) => {
+                const match = oneUser?.catDog.toLowerCase();
+                return match.includes(studyHourQuery.toLowerCase());
+            })
+        }
+    }
+    const suggestedUsersStudyHour = suggestUsersStudyHour(otherUsers, studyHourQuery);
+ /*------------------------filters--------------------------*/
+
+
+
+
+
     return (
         <>
             <div>
                 <p className="suggestionTitle"> Suggestions For You</p>
 
                 <div className="suggestionDiv">
+                    <p className="titleBoxes"> Same Major</p>
                     <Grid className={classes.container} container alignItems="stretch" spacing={4}>
-                {
-
-                    suggestedUsers.map((suggestedUser) => (
-                        <Grid item sm={6}>
-                            <SuggestionBox suggestedUser={suggestedUser} />
-                        </Grid>
-                     ))}
-                </Grid>
-
+                    {
+                        suggestedUsersMajor?.map((suggestedUserMajor) => (
+                            <Grid key={suggestedUserMajor?._id} item sm={6}>
+                                <SuggestionBox suggestedUser={suggestedUserMajor} />
+                            </Grid>
+                        ))
+                    }
+                    </Grid>
                 </div>
-
+                <div className="suggestionDiv">
+                    <p className="titleBoxes"> Same Year </p>
+                    <Grid className={classes.container} container alignItems="stretch" spacing={4}>
+                        {
+                            suggestedUsersYear?.map((suggestedUserYear) => (
+                                <Grid key={suggestedUserYear._id} item sm={6}>
+                                    <SuggestionBox suggestedUser={suggestedUserYear} />
+                                </Grid>
+                            ))
+                        }
+                    </Grid>
+                </div> 
+                <div className="suggestionDiv">
+                    <p className="titleBoxes"> Pet </p>
+                    <Grid className={classes.container} container alignItems="stretch" spacing={4}>
+                        {
+                            suggestedUsersPet?.map((suggestedUserPet) => (
+                                <Grid key={suggestedUserPet._id} item sm={6}>
+                                    <SuggestionBox suggestedUser={suggestedUserPet} />
+                                </Grid>
+                            ))
+                        }
+                    </Grid>
+                </div> 
+                <div className="suggestionDiv">
+                    <p className="titleBoxes"> Study Time Preference </p>
+                    <Grid className={classes.container} container alignItems="stretch" spacing={4}>
+                        {
+                            suggestedUsersStudyHour?.map((suggestedUserStudyHour) => (
+                                <Grid key={suggestedUserStudyHour._id} item sm={6}>
+                                    <SuggestionBox suggestedUser={suggestedUserStudyHour} />
+                                </Grid>
+                            ))
+                        }
+                    </Grid>
+                </div> 
             </div>
         </>
     )
@@ -129,101 +206,6 @@ export default Suggestion
 
 
 
-
-
-
-
-
-// class Suggestion extends React.Component{
-
-
-
-    
-//     constructor(props){
-//         super(props);
-//        this.state = {i: 0, positions: []};
-       
-//        this.handleClick = this.handleClick.bind(this);
-//     }
-
-//     handleClick(){
-//         this.setState(prevState => ({
-//             i: prevState.i+3,
-//         }));
-//     }
-    
-//     render(){
-//         if(this.state.i - array.length === 0)
-//         {
-//             this.state.i = 0;
-//         }
-//         else if(this.state.i - array.length === 1)
-//         {
-//             this.state.i = 1;
-//         }
-//         else if(this.state.i - array.length === 2)
-//         {
-//             this.state.i = 2;
-//         }
-//         this.state.positions = Tracker(this.state.i);
-//  return(
-//         <div className="grid-container">
-//             <div className="header">
-//                 <h2>Recommendation For You</h2>
-//             </div>
-            
-//             <div className="left" >
-//                 Name: {array[this.state.positions[0]][0]}
-//                 <div>
-//                     Major: {array[this.state.positions[0]][1]}
-//                 </div>
-//                 <div>
-//                     Decription: {array[this.state.positions[0]][2]}
-//                 </div>
-//                 <img src = {array[this.state.positions[0]][3]}></img>
-//                 <br />
-//                 <button className="add">add</button>
-//             </div>
-
-//             <div className="middle" >
-//                 Name: {array[this.state.positions[1]][0]}
-//             <div>
-//                 Major: {array[this.state.positions[1]][1]}
-//             </div>
-//             <div>
-//                 Decription: {array[this.state.positions[1]][2]}
-//             </div>
-//                 <button>
-//                 <img src = {array[this.state.positions[1]][3]}></img>
-//                 </button>
-//             </div>  
-
-
-// <div className="right" >
-//     Name: {array[this.state.positions[2]][0]}
-//     <div>
-//         Major: {array[this.state.positions[2]][1]}
-//     </div>
-//     <div>
-//         Decription: {array[this.state.positions[2]][2]}
-//     </div>
-//     <img src = {array[this.state.positions[2]][3]}></img>
-//     <br />
-//     <button className="add">add</button>
-
-// </div>
-
-// <div className="footer">
-//     <button className="swipeButton" onClick={this.handleClick}>
-//         Swipe
-//     </button>
-// </div>
-// </div>);
-// }
-// }
-
-
-// export default Suggestion;
 
 
 

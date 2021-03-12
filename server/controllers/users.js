@@ -47,6 +47,7 @@ export const signup = async (req, res) => {
 
 export const getUsers = async (req, res) => {
     try {
+        console.log("what");
         const users = await User.find();
         res.status(200).json(users);
     } catch (error) {
