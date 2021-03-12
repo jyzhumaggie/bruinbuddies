@@ -13,9 +13,10 @@ const PersonalInfo = () => {
 		year: "", 
 		hobbies: "", 
 		catDog: "", 
-		nightOrMorning: "", 
-		groupSize: "",
+		nightOrMorning: "night", 
+		groupSize: "small",
 		selectedFile: "",
+		classes: "",
 	})
 
 	const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const PersonalInfo = () => {
 		console.log(user?.result);
 
 	} 
-	console.log(formData.result);
+	console.log(user.result);
 	const currentId = user?.result?._id;
 	
 	useEffect(() => {
@@ -104,14 +105,6 @@ const PersonalInfo = () => {
 					</select>
 				</label>
 				<label>
-					<p>Cat or Dog?</p>
-					<select name="catDog" required onChange={(e) => setFormData({ ...formData, catDog: e.target.value }) } value={formData.catDog}>
-					<option value="">--Please choose an option--</option>
-					<option value="cat">Cat</option>
-					<option value="dog">Dog</option>
-					</select>
-				</label>
-				<label>
 					<p>Major</p>
 					<input name="major" onChange={handleChange} value={formData.major} />
 				</label>
@@ -131,13 +124,28 @@ const PersonalInfo = () => {
 				<input name="hobbies" onChange={(e) => setFormData({ ...formData, hobbies: e.target.value })} step="1" value={formData.hobbies }/>
 				</label>
 				<label>
-				<p>Do you like to study during the night?</p>
-				<input 
-					checked={formData['night-study']}
-					name="night-study"
-					onChange={(e) => setFormData({ ...formData, nightOrMorning: e.target.value })}
-					type="checkbox"
-				/>
+					<p>Cat or Dog?</p>
+					<select name="catDog" required onChange={(e) => setFormData({ ...formData, catDog: e.target.value }) } value={formData.catDog}>
+					<option value="">--Please choose an option--</option>
+					<option value="cat">Cat</option>
+					<option value="dog">Dog</option>
+					</select>
+				</label>
+				<label>
+				<p>Night study or Morning study?</p>
+					<select name="nightOrMorning" required onChange={(e) => setFormData({ ...formData, nightOrMorning: e.target.value }) } value={formData.nightOrMorning}>
+					<option value="">--Please choose an option--</option>
+					<option value="night">Night</option>
+					<option value="morning">Morning</option>
+					</select>
+				</label>
+				<label>
+				<p>Large study groups or small ones?</p>
+					<select name="groupSize" required onChange={(e) => setFormData({ ...formData, groupSize: e.target.value }) } value={formData.groupSize}>
+					<option value="">--Please choose an option--</option>
+					<option value="large">Large</option>
+					<option value="small">Small</option>
+					</select>
 				</label>
 				</fieldset>
 			{/* <button type="submit" disabled={submitting}>Submit</button> */}
