@@ -64,7 +64,7 @@ const Auth = () => {
         const token = res?.tokenId;
         try {
             dispatch({ type: 'AUTH', data: { result, token }});
-            history.push("/suggestion");
+            history.push("/personalinfo");
         } catch (error) {
             console.log(error);
         }
