@@ -37,41 +37,7 @@ const Nav = () => {
     }
 
     return (
-        // <nav>
-        //     <ul>
-        //         <li className="bruinBuddiesIcon">
-        //             <Link to="/">BruinBuddies</Link>
-        //         </li>
-        //     </ul>       
-            // {user?.result ? (
-            //     <>
-        //             <ul className="links">
-        //                 <li>
-        //                     <Link to="/">Home</Link>
-        //                 </li>
-        //                 <li>
-        //                     <Link to="/posts">Friends</Link>
-        //                 </li>
-        //                 <li>
-        //                     <Link to="/personalinfo">MyInfo</Link>
-        //                 </li>
-        //                 <li>
-        //                     <Link to="/myinfo">MySpace</Link>
-        //                 </li>
-                        
-        //             </ul>
-                    // <div className="fixedButton1">
-                    //     <Button variant="contained" color="secondary" onClick={logout}>
-                    //         Log Out
-                    //     </Button>
-                    // </div>
-            //     </>
-            // ) : (
-            //     <div className="fixedButton2">
-            //         <Button component={Link} to='/auth' variant="contained" color="primary">Sign In</Button>
-            //     </div>
-            // )}
-        // </nav>
+        
         <>
         <AppBar className={classes.appBar}>
                 <Link to='/' className={classes.heading}> BruinBuddies </Link>
@@ -81,6 +47,7 @@ const Nav = () => {
                     <Link to='/posts' className={classes.posts}> Posts </Link>
                     <Link to='/search' className={classes.search}> Search </Link>
                     <Link to='/profile' className={classes.profilePage}> Profile </Link>
+                    <Link to='/suggestion' className={classes.suggestions}> Suggestion </Link>
                     <div>
                         <Button className={classes.button} variant="contained" color="secondary" onClick={logout}>
                             Log Out

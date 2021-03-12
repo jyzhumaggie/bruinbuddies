@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
   appBar: {
     display: 'grid',
     // flexDirection: 'row',
-    gridTemplateColumns: '30% 20% auto 8% 8% 8% 8% 8%',
+    gridTemplateColumns: '30% 10% 8% 8% 8% 8% 8% 8%',
     columnGap: '1vw',
     alignItems: 'center',
 
@@ -41,7 +41,7 @@ export default makeStyles((theme) => ({
     fontWeight: 'bolder',
   },
   button: {
-    marginLeft: '1.5vw',
+    marginLeft: '5vw',
     gridColumnStart: '5',
     color: 'white',
     fontSize: '1vw',
@@ -49,8 +49,8 @@ export default makeStyles((theme) => ({
     padding: '0.5vw'
   },
   button2: {
-    marginLeft: '60vw',
-    marginRight: '1vw',
+    marginLeft: '57vw',
+    marginRight: '3vw',
     gridColumnStart: '6',
     color: 'white',
     fontSize: '1.5vw',
@@ -97,5 +97,12 @@ export default makeStyles((theme) => ({
     backgroundPosition: 'top center',
     height: 'min-content'
   },
+  suggestions: {
+    gridColumnStart: '7',
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '2.5vw',
+    fontWeight: 'bolder',
+  }
 
 }));
