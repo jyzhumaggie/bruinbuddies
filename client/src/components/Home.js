@@ -9,6 +9,9 @@ const Home = () => {
 				<li><b>Name:</b> gag <b>Email:</b> agd@gmail.com</li>
 			</ul>
 		</div>
+		{/* <>
+		</> */}
+
 	)
 }
 
