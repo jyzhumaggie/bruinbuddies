@@ -4,18 +4,14 @@
 // import { Platform, StyleSheet, View, Image } from 'react-native';
 import { render } from "react-dom";
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux'; 
 import { getUsers, updateUser } from '../../actions/users';
 // import image from './image.js'
+import './Profile.css';
 
-//function pname()
-//{
-  
-//}
 
 
 const Profile = () => {
-//  const classes = useStyles; // add styles later?
 const dispatch = useDispatch(getUsers());
 const [currentId, setCurrentId] = useState(null);
 
@@ -23,106 +19,58 @@ const [currentId, setCurrentId] = useState(null);
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch, currentId]); // dependency array
+  const user = JSON.parse(localStorage.getItem('profile'));
+  const allUsers = useSelector((state) => state.posts);
+  const thisUser = allUsers.filter( (one) => {
+    if (user?.result?.email === one?.email) {
+        console.log("i am u");
+        return one;
+    } else { 
+        return null;
+    }
+} );
 
+console.log(user?.result);
+
+const userHere = user;
+console.log(userHere.selectedFile);
   return (
-    <div className="profile" 
-    style={{backgroundColor:'aliceblue'}}>
-    
-    <div className="picture">
-      <h1> <br/> </h1>
-    
-      <img 
-    //   alt={alt} src={pic}
-    
-          style={{width: 220, height: 300,
-          borderRadius:1000}}
-          />
-    
-      </div>
-    
-    
-    
-      <div className="name">
-          <h1>Kaashif Mohsin
-          </h1>
-      </div>
-    
-    
-    
-      <div className="body">
-    
-    
-          <h2 >Year: <br/> 
-          Major: <br/> 
-          Interests: <br/> 
-          Classes: <br/> 
-          Clubs/Organizations: <br/> 
-    
-    
-          </h2>
-          
-    
-    
-    
-      </div>
-    
-        </div>
-    
-  )
+	  <div>
+    	<div className="profile">
+    		<div className="picture">
+		
+				<img className="profilePic" src={userHere?.result?.selectedFile}/>
+			</div>
+			<div className="name">
+				<h1>{userHere?.result?.name}</h1>
+			</div>
 
+      		<div className="body">
+    
+    
+				<h2 className="valueFields"> {userHere?.result?.bio} </h2>
+				<h2> Year: </h2>
+					<h2 className="valueFields">{userHere?.result?.year}</h2>
+				<h2> Major: </h2>
+				<h2 className="valueFields">{userHere?.result?.major}</h2>
+				
+				<h2>Hobbies:</h2> 
+				<h2 className="valueFields">{userHere?.result?.hobbies}</h2>
+
+					
+				<h2>Are you a cat person or a dog person?:</h2>
+				<h2 className="valueFields"> {userHere?.result?.catDog} </h2>
+				<h2>Do you prefer to study in the morning or night?:</h2>
+				<h2 className="valueFields">{userHere?.result?.nightOrMorning} </h2>
+        		<h2>Do you prefer to study in smaller or larger groups?: </h2>
+				<h2 className="valueFields"> {userHere?.result?.groupSize} </h2> 
+        
+	        </div>
+    	</div>
+		</div>
+   )
 }
 
 export default  Profile;
  
-// export default function Profile() 
-// {
- 
 
-  
-//   return (
-
-   
-// <div className="profile" 
-// style={{backgroundColor:'aliceblue'}}>
-
-// <div className="picture">
-//   <h1> <br/> </h1>
-
-//   <img 
-// //   alt={alt} src={pic}
-
-//       style={{width: 220, height: 300,
-//       borderRadius:1000}}
-//       />
-
-//   </div>
-
-
-
-//   <div className="name">
-//       <h1>Kaashif Mohsin
-//       </h1>
-//   </div>
-
-
-
-//   <div className="body">
-
-
-//       <h2 >Year: <br/> 
-//       Major: <br/> 
-//       Interests: <br/> 
-//       Classes: <br/> 
-//       Clubs/Organizations: <br/> 
-
-
-//       </h2>
-      
-
-
-
-//   </div>
-
-//     </div>
-//   );
-// }
