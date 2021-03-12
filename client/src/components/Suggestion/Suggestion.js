@@ -62,7 +62,7 @@ const Suggestion = () => {
 
 
  
-    // console.log(allUsers);
+    console.log(allUsers);
     const otherUsers = allUsers.filter( (one) => {
         if (user?.result?.email === one?.email) {
             console.log("i am u");
@@ -72,21 +72,29 @@ const Suggestion = () => {
         }
     } );
     // console.log(otherUsers);
-    // console.log(user?.result?.name);
+
+    const mee = allUsers.filter( (one) => {
+        if (user?.result?.email === one?.email) {
+            console.log(one);
+            return one;
+        }
+    } );
+    // console.log(userHere);
     // console.log("Here");
-
-
+    // console.log(meee[0]);
+    const userHere = mee[0];
  /*------------------------filters--------------------------*/
-    const majorQuery = user?.result?.major;
+    const majorQuery = userHere?.major;
     console.log(majorQuery); 
     const suggestUsersMajor = ( otherUsers, majorQuery ) => {
         if (!majorQuery) {
             return null;
         } else {
-            console.log()
+            // console.log()
             return otherUsers.filter((oneUser) => {
-                const match = oneUser?.major.toLowerCase();
-                return match.includes(majorQuery.toLowerCase());
+                console.log(oneUser);
+                const match = oneUser?.major?.toLowerCase();
+                return match.includes(majorQuery?.toLowerCase());
             })
         }
     }
@@ -103,8 +111,8 @@ const Suggestion = () => {
             return null;
         } else {
             return otherUsers.filter((oneUser) => {
-                const match = oneUser?.year.toLowerCase();
-                return match.includes(yearQuery.toLowerCase());
+                const match = oneUser?.year?.toLowerCase();
+                return match.includes(yearQuery?.toLowerCase());
             })
         }
     }
@@ -116,8 +124,8 @@ const Suggestion = () => {
             return null;
         } else {
             return otherUsers.filter((oneUser) => {
-                const match = oneUser?.catDog.toLowerCase();
-                return match.includes(petQuery.toLowerCase());
+                const match = oneUser?.catDog?.toLowerCase();
+                return match.includes(petQuery?.toLowerCase());
             })
         }
     }
@@ -129,8 +137,8 @@ const Suggestion = () => {
             return null;
         } else {
             return otherUsers.filter((oneUser) => {
-                const match = oneUser?.catDog.toLowerCase();
-                return match.includes(studyHourQuery.toLowerCase());
+                const match = oneUser?.catDog?.toLowerCase();
+                return match.includes(studyHourQuery?.toLowerCase());
             })
         }
     }

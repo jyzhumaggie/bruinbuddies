@@ -34,8 +34,9 @@ const Post = ({ post, setCurrentId }) => {
 
     return ( 
         <Card className={classes.card}>
-            <CardMedia component="img" className={classes.media} image={post.selectedFile} title={post.title} />
-            
+            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+            {/* <img className="profilePic" src={post.selectedFile}/> */}
+
             <div className={classes.overlay2}>
             {(user?.result?.googleId === post?.creater || user?.result?._id === post?.creater) && (
 
@@ -48,7 +49,7 @@ const Post = ({ post, setCurrentId }) => {
             )
             }
             </div>
-            <CardContent component="" className={classes.cardContents}>
+            <CardContent className={classes.cardContents}>
                 <Typography className={classes.details}>{post.name}</Typography>
                 <Typography className={classes.details2}>{moment(post.createdAt).fromNow()}</Typography>
                 <Typography className={classes.title}>{post.title}</Typography>
