@@ -46,15 +46,15 @@ const PostForm = ({ currentId, setCurrentId }) => {
     }
 
 
-    if (!user?.result?.name) {
-        return (
-            <Paper className={classes.paper}>
-                <Typography variant="h6" align="center" style={{ fontWeight: 'bolder' }}>
-                    Please Sign In 
-                </Typography>
-            </Paper>
-        )
-    }
+   // if (!user?.result?.name) {
+   //     return (
+   //         <Paper className={classes.paper}>
+  //              <Typography variant="h6" align="center" style={{ fontWeight: 'bolder' }}>
+ //                   Please Sign In 
+//                </Typography>
+//            </Paper>
+//        )
+//    }
 
     return ( 
         <Paper className={classes.Paper}>
