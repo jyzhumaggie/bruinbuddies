@@ -1,7 +1,7 @@
 import React, {  useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './PersonalInfo.css';
-import { getUsers, updateUser } from '../../actions/users';
+import { updateUser } from '../../actions/users';
 import FileBase from 'react-file-base64';
 
 
@@ -41,7 +41,7 @@ const PersonalInfo = () => {
 	const handleSubmit =  (event) => {
 		event.preventDefault();
 		console.log(formData);
-		dispatch(updateUser(currentId, { ...formData }));
+		dispatch(updateUser(currentId, { ...formData, name: user?.result?.name }));
 		
 		setTimeout(() => {
 
@@ -64,7 +64,7 @@ const PersonalInfo = () => {
 	return (
 		<div className="wrapper">
 
-			<form onSubmit={handleSubmit}>
+			<form className="infoForm" onSubmit={handleSubmit}>
 				<fieldset>
 					<p>Upload a display picture</p>
 					<FileBase

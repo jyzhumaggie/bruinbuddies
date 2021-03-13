@@ -1,14 +1,10 @@
-/* 
-div {
-    align-items: center;
-    margin-left: 9%;
-}
+
+
 .profile {
     background-color: rgba(100, 85, 153, 0.516);
-    margin-top: 20vh;
-
+    margin: 20vh auto;
     height: min-content;
-    width: min-content;
+    width: 70%;
     display: grid;
 
     align-items: center;
@@ -54,4 +50,4 @@ h2 {
     align-content: center;
     align-items: center;
     margin: 0;
-}  */
+} 

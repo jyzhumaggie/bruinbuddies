@@ -12,7 +12,6 @@ const Posts = ({ setCurrentId }) => {
     const posts = useSelector((state) => state.posts);  // reducers/index.js: combineReducers posts
     const classes = makeStyles();
 
-    console.log(posts);
     return ( 
         !posts.length ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={4}>

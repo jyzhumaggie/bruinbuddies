@@ -9,13 +9,16 @@ export default makeStyles( () => ({
         justifyContent: 'center',
         backgroundColor: '#000000',
         maxWidth: 300,
+        marginTop: '15vh', 
+        padding: '1vh',
+
       },
       heading: {
         color: '#FFFFFC',
         fontWeight: 'bolder',
         fontSize: 'xx-large',
-        margin: 6,
-      },
+
+      },  
       image: {
         marginLeft: '15px',
       },

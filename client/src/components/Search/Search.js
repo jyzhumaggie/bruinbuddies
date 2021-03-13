@@ -1,26 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Search.css';
 import { useSelector } from 'react-redux';
 import Post from '../Posts/Post/Post';
 import { Grid } from "@material-ui/core";
+import { getPosts } from '../../actions/posts';
+
+import { useDispatch } from 'react-redux';  //allow dispatch an action: HOOK
 
 
-const handleSearch = () => {
-    
-}
 
 
 
 
 const Search = () => {
     const posts = useSelector((state) => state.posts);  // reducers/index.js: combineReducers posts
-    const users = useSelector((state) => state.users);  // reducers/index.js: combineReducers posts
-    
-    const user = JSON.parse(localStorage.getItem('profile'));
 
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     
+    const dispatch = useDispatch(getPosts()); //hook
+    
+    const [currentId, setCurrentId] = useState(null);
+
+    // where to dispatch the action, inside useEffect
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [dispatch, currentId]); // dependency array
+ 
+
+
     const filterPosts = (posts, query) => {
         if (!query) {
             return null;
@@ -32,7 +40,7 @@ const Search = () => {
         }
     }
 
-    const [searchQuery, setSearchQuery] = useState(query | ' ' );
+    const [searchQuery, setSearchQuery] = useState(query | '' );
     const filteredPosts = filterPosts(posts, searchQuery);
     
     return (
