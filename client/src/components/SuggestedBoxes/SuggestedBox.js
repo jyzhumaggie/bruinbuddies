@@ -5,24 +5,40 @@ import makeStyles from './styles';
 const SuggestedBox = ( suggestedUser ) => {
     const classes = makeStyles();
 
-    console.log(suggestedUser);
-    console.log(suggestedUser.suggestedUser?.name);
-    const user = suggestedUser.suggestedUser;
-    // console.log(user?.selectedFile);
+    //console.log(suggestedUser);
+   // console.log(suggestedUser.suggestedUser?.name);
+    const sUser = suggestedUser.suggestedUser;
+    // console.log(sUser?.selectedFile);
+
+    const user = JSON.parse(localStorage.getItem('profile'));
+    console.log(user?.result?.email + ' is my name');
+
+    // const addFriend = () => {
+    //     if (user sUser?.result?.email)
+    // }
+    //const Friending = () => {
+     //   return <h5>ahha</h5>
+   // }
+    console.log(sUser?.friends);
+
     return (
         <Card > 
             
             <CardContent >
-                <CardMedia className={classes.media} image={user.selectedFile} title={user.name} />
-                <Typography className={classes.title}>{user.name}</Typography>
-                <Typography className={classes.message}>{user.bio}</Typography>
-                <Typography className={classes.details}>{user.year}</Typography>
-                <Typography className={classes.details}>{user.major}</Typography>
+                <CardMedia className={classes.media} image={sUser.selectedFile} title={sUser.name} />
+                <Typography className={classes.title}>{sUser.name}</Typography>
+                <Typography className={classes.message}>{sUser.bio}</Typography>
+                <Typography className={classes.details}>{sUser.year}</Typography>
+                <Typography className={classes.details}>{sUser.major}</Typography>
             </CardContent>
 
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="secondary" disabled={!user} onClick={()=> {}}>
-                        Add Friends
+                <Button size="small" color="secondary" disabled={!sUser} onClick={()=> {}}>
+                    {
+                     !sUser?.friends.find((friend) => friend === user?.result?.email) && (
+                         <Friending />
+                     )
+                    }
                 </Button>
                 
             </CardActions>
@@ -30,4 +46,4 @@ const SuggestedBox = ( suggestedUser ) => {
     )
 }
 
-export default SuggestedBox
+export default 
