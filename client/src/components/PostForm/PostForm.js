@@ -28,6 +28,17 @@ const PostForm = ({ currentId, setCurrentId }) => {
         }
         clear();
     }
+                                            
+                                            
+                                            if (!user?.result?.name) {
+        return (
+            <Paper className={classes.paper}>
+                <Typography variant="h5" align="center" }}>
+                     SIGN IN:
+                </Typography>
+            </Paper>
+        )
+    }
 
     const clear = () => {
         setCurrentId(null);
