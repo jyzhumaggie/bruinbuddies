@@ -6,6 +6,7 @@ div {
 .profile {
     background-color: rgba(100, 85, 153, 0.516);
     margin-top: 20vh;
+      font-family: futura;
 
     height: min-content;
     width: min-content;
@@ -29,12 +30,14 @@ div {
 h1 {
     color: white;
     font-size: 8vh;
+      font-family: futura;
     align-content: center;
     margin-left: -3vw;
 }
 
 h2 {
     color: white;
+      font-family: futura;
     font-size: large;
     margin-left: 0px;
     
@@ -43,6 +46,7 @@ h2 {
 .valueFields {
     color: beige;
     border: 2px solid rgb(1, 14, 1);
+      font-family: futura;
     padding: 6px;
     margin-bottom: 6vh;
     margin-right: 3vw;
@@ -53,5 +57,6 @@ h2 {
 .body {
     align-content: center;
     align-items: center;
+      font-family: futura;
     margin: 0;
 } 
