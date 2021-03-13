@@ -58,7 +58,7 @@ const Suggestion = () => {
     console.log(user?.result?.name);
     console.log(user);
     const allUsers = useSelector((state) => state.posts);  // reducers/index.js: combineReducers posts
-    // console.log(allUsers);
+    // console.log(allUsers); 
 
 
  
@@ -144,15 +144,152 @@ const Suggestion = () => {
     }
     const suggestedUsersStudyHour = suggestUsersStudyHour(otherUsers, studyHourQuery);
  /*------------------------filters--------------------------*/
+ const groupSizeQuery = user?.result?.groupSize;
+    const suggestUsersGroupSize = ( otherUsers, groupSizeQuery ) => {
+        if (!groupSizeQuery) {
+            return null;
+        } else {
+            return otherUsers.filter((oneUser) => {
+                const match = oneUser?.groupSize?.toLowerCase();
+                return match?.includes(groupSizeQuery?.toLowerCase());
+            })
+        }
+    }
+    const suggestedUsersGroupSize = suggestUsersGroupSize(otherUsers, groupSizeQuery);
 
 
+console.log(suggestedUsersYear[0]?.name);
+var array = [];
+var arrayIndex = 0;
+function element(profile, counter)
+{
+    return ([profile, counter]);
+}
+for(var i = 0; i < suggestedUsersMajor?.length; i++)
+{
+    array[arrayIndex] = element(suggestedUsersMajor[i], 1);
+    arrayIndex++;
+} 
 
+for(var i = 0; i < suggestedUsersMajor?.length; i++)
+{
+    array[arrayIndex] = element(suggestedUsersMajor[i], 1);
+    arrayIndex++;
+}
 
+console.log(array);
+
+for(var i = 0; i < suggestedUsersYear?.length; i++)
+{
+    var didMatch = 0;
+    for(var j = 0; j < array.length; j++)
+    {
+        if(suggestedUsersYear[i]?.name == array[j][0]?.name)
+        {
+            array[j][1]++;
+            didMatch = 1;
+            break;
+        }
+    }
+    if(didMatch == 0)
+    {
+        array[arrayIndex] = element(suggestedUsersYear[i], 1);
+        arrayIndex++;
+    }
+    
+}
+for(var i = 0; i < suggestedUsersPet?.length; i++)
+{
+    var didMatch = 0;
+    for(var j = 0; j < array.length; j++)
+    {
+        if(suggestedUsersPet[i]?.name == array[j][0]?.name)
+        {
+            array[j][1]++;
+            didMatch = 1;
+            break;
+        }
+    }
+    if(didMatch == 0)
+    {
+        array[arrayIndex] = element(suggestedUsersPet[i], 1);
+        arrayIndex++;
+    }
+    
+}
+for(var i = 0; i < suggestedUsersStudyHour?.length; i++)
+{
+    var didMatch = 0;
+    for(var j = 0; j < array.length; j++)
+    {
+        if(suggestedUsersStudyHour[i]?.name == array[j][0]?.name)
+        {
+            array[j][1]++;
+            didMatch = 1;
+            break;
+        }
+    }
+    if(didMatch == 0)
+    {
+        array[arrayIndex] = element(suggestedUsersStudyHour[i], 1);
+        arrayIndex++;
+    }
+    
+}
+for(var i = 0; i < suggestedUsersGroupSize?.length; i++)
+{
+    var didMatch = 0;
+    for(var j = 0; j < array.length; j++)
+    {
+        if(suggestedUsersGroupSize[i]?.name == array[j][0]?.name)
+        {
+            array[j][1]++;
+            didMatch = 1;
+            break;
+        }
+    }
+    if(didMatch == 0)
+    {
+        array[arrayIndex] = element(suggestedUsersGroupSize[i], 1);
+        arrayIndex++;
+    }
+    
+}
+console.log(array);
+
+var finalArray = [];
+var finalArrayIndex = 0;
+for(var i = 0; i < array.length; i++)
+{
+    if(array[i][1] >= 3)
+    {
+        finalArray[finalArrayIndex] = array[i][0];
+        finalArrayIndex++;
+    }
+}
+
+console.log(finalArray);
 
     return (
         <>
             <div>
                 <p className="suggestionTitle"> Suggestions For You</p>
+
+
+                <div className="suggestionDiv">
+                    <p className="titleBoxes"> BEST MATCH </p>
+                    <Grid className={classes.container} container alignItems="stretch" spacing={4}>
+                    {
+                        finalArray?.map((user) => (
+                            <Grid key={user?._id} item sm={6}>
+                                <SuggestionBox suggestedUser={user} />
+                            </Grid>
+                        ))
+                    }
+                    </Grid>
+                </div>
+
+
 
                 <div className="suggestionDiv">
                     <p className="titleBoxes"> Same Major</p>
@@ -207,16 +344,4 @@ const Suggestion = () => {
     )
 }
 
-
-
-
 export default Suggestion
-
-
-
-
-
-
-
-
-
