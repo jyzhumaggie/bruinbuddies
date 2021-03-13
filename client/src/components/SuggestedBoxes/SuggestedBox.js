@@ -5,10 +5,10 @@ import makeStyles from './styles';
 const SuggestedBox = ( suggestedUser ) => {
     const classes = makeStyles();
 
-    //console.log(suggestedUser);
-   // console.log(suggestedUser.suggestedUser?.name);
+    console.log(suggestedUser);
+    console.log(suggestedUser.suggestedUser?.name);
     const sUser = suggestedUser.suggestedUser;
-    // console.log(sUser?.selectedFile);
+    console.log(sUser?.selectedFile);
 
     const user = JSON.parse(localStorage.getItem('profile'));
     console.log(user?.result?.email + ' is my name');
@@ -16,9 +16,9 @@ const SuggestedBox = ( suggestedUser ) => {
     // const addFriend = () => {
     //     if (user sUser?.result?.email)
     // }
-    //const Friending = () => {
-     //   return <h5>ahha</h5>
-   // }
+   /const Friending = () => {
+       return <h5>FRIENDS</h5>
+    }
     console.log(sUser?.friends);
 
     return (
