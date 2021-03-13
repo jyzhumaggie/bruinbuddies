@@ -1,33 +1,33 @@
 
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'; 
+import { useDispatch } from 'react-redux'; 
 import { getUsers } from '../../actions/users';
-// import image from './image.js'
 import './Profile.css';
 
 
 
 const Profile = () => {
 const dispatch = useDispatch(getUsers());
-const [currentId, setCurrentId] = useState(null);
 
+const user = JSON.parse(localStorage.getItem('profile'));
+
+console.log(user);
 // where to dispatch the action, inside useEffect
   useEffect(() => {
+
     dispatch(getUsers());
-  }, [dispatch, currentId]); // dependency array
-  const user = JSON.parse(localStorage.getItem('profile'));
+  }, [dispatch]); // dependency array
 
 
 
 const userHere = user;
 
-console.log(userHere.selectedFile);
+// console.log(userHere?.result?.selectedFile);
   return (
-	  <div>
     	<div className="profile">
     		<div className="picture">
 		
-				<img className="profilePic" src={userHere?.result?.selectedFile}/>
+				<img className="profilePic" src={userHere?.result?.selectedFile} alt="profile"/>
 			</div>
 			<div className="name">
 				<h1>{userHere?.result?.name}</h1>
@@ -41,7 +41,7 @@ console.log(userHere.selectedFile);
 					<h2 className="valueFields">{userHere?.result?.year}</h2>
 				<h2> Major: </h2>
 				<h2 className="valueFields">{userHere?.result?.major}</h2>
-				
+				 
 				<h2>Hobbies:</h2> 
 				<h2 className="valueFields">{userHere?.result?.hobbies}</h2>
 
@@ -55,7 +55,6 @@ console.log(userHere.selectedFile);
         
 	        </div>
     	</div>
-		</div>
    )
 }
 

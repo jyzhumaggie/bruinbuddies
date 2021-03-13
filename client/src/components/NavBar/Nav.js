@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { AppBar, Button } from '@material-ui/core';
 import makeStyles from './styles';
-// import './Nav.css';
 import { useDispatch } from 'react-redux';
 import { LOGOUT } from '../../constants/actionTypes';
 import decode from 'jwt-decode';

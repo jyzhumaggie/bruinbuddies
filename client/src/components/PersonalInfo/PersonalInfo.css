@@ -1,6 +1,6 @@
 .wrapper {
     margin-top: 10vw;
-    padding: 5px 20px;
+    padding: 1px 20px;
     background-color: rgba(91, 77, 142, 0.502);
     font-weight: bold;
     font-size: large;
@@ -8,9 +8,10 @@
 }
 
 .wrapper fieldset {
-    margin: 20px 5px;
+    margin: 1vh 2vh;
     border: solid ;
     border-color: rgb(201, 195, 215);
+    margin-bottom: 3vh;
 }
 
 input {
@@ -20,4 +21,9 @@ input {
 p {
     margin-top: 4vh;
     margin-bottom: 1vh;
+}
+
+.infoForm {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }

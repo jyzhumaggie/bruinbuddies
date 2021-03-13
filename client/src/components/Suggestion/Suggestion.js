@@ -43,6 +43,7 @@ const Suggestion = () => {
             console.log(one);
             return one;
         }
+        return null;
     } );
 
 
@@ -55,9 +56,7 @@ const Suggestion = () => {
         if (!majorQuery) {
             return null;
         } else {
-            // console.log()
             return otherUsers.filter((oneUser) => {
-                console.log(oneUser);
                 const match = oneUser?.major?.toLowerCase();
                 return match.includes(majorQuery?.toLowerCase());
             })
@@ -77,7 +76,7 @@ const Suggestion = () => {
         } else {
             return otherUsers.filter((oneUser) => {
                 const match = oneUser?.year?.toLowerCase();
-                return match.includes(yearQuery?.toLowerCase());
+                return match?.includes(yearQuery?.toLowerCase());
             })
         }
     }
@@ -90,7 +89,7 @@ const Suggestion = () => {
         } else {
             return otherUsers.filter((oneUser) => {
                 const match = oneUser?.catDog?.toLowerCase();
-                return match.includes(petQuery?.toLowerCase());
+                return match?.includes(petQuery?.toLowerCase());
             })
         }
     }
@@ -103,7 +102,7 @@ const Suggestion = () => {
         } else {
             return otherUsers.filter((oneUser) => {
                 const match = oneUser?.catDog?.toLowerCase();
-                return match.includes(studyHourQuery?.toLowerCase());
+                return match?.includes(studyHourQuery?.toLowerCase());
             })
         }
     }
@@ -123,123 +122,119 @@ const Suggestion = () => {
     const suggestedUsersGroupSize = suggestUsersGroupSize(otherUsers, groupSizeQuery);
 
 
-console.log(suggestedUsersYear[0]?.name);
-var array = [];
-var arrayIndex = 0;
-function element(profile, counter)
-{
-    return ([profile, counter]);
-}
-for(var i = 0; i < suggestedUsersMajor?.length; i++)
-{
-    array[arrayIndex] = element(suggestedUsersMajor[i], 1);
-    arrayIndex++;
-} 
-
-for(var i = 0; i < suggestedUsersMajor?.length; i++)
-{
-    array[arrayIndex] = element(suggestedUsersMajor[i], 1);
-    arrayIndex++;
-}
-
-console.log(array);
-
-for(var i = 0; i < suggestedUsersYear?.length; i++)
-{
-    var didMatch = 0;
-    for(var j = 0; j < array.length; j++)
+    var array = [];
+    var arrayIndex = 0;
+    function element(profile, counter)
     {
-        if(suggestedUsersYear[i]?.name == array[j][0]?.name)
-        {
-            array[j][1]++;
-            didMatch = 1;
-            break;
-        }
+        return ([profile, counter]);
     }
-    if(didMatch == 0)
+    for(var i = 0; i < suggestedUsersMajor?.length; i++)
     {
-        array[arrayIndex] = element(suggestedUsersYear[i], 1);
+        array[arrayIndex] = element(suggestedUsersMajor[i], 1);
+        arrayIndex++;
+    } 
+
+    for(i = 0; i < suggestedUsersMajor?.length; i++)
+    {
+        array[arrayIndex] = element(suggestedUsersMajor[i], 1);
         arrayIndex++;
     }
-    
-}
-for(var i = 0; i < suggestedUsersPet?.length; i++)
-{
-    var didMatch = 0;
-    for(var j = 0; j < array.length; j++)
-    {
-        if(suggestedUsersPet[i]?.name == array[j][0]?.name)
-        {
-            array[j][1]++;
-            didMatch = 1;
-            break;
-        }
-    }
-    if(didMatch == 0)
-    {
-        array[arrayIndex] = element(suggestedUsersPet[i], 1);
-        arrayIndex++;
-    }
-    
-}
-for(var i = 0; i < suggestedUsersStudyHour?.length; i++)
-{
-    var didMatch = 0;
-    for(var j = 0; j < array.length; j++)
-    {
-        if(suggestedUsersStudyHour[i]?.name == array[j][0]?.name)
-        {
-            array[j][1]++;
-            didMatch = 1;
-            break;
-        }
-    }
-    if(didMatch == 0)
-    {
-        array[arrayIndex] = element(suggestedUsersStudyHour[i], 1);
-        arrayIndex++;
-    }
-    
-}
-for(var i = 0; i < suggestedUsersGroupSize?.length; i++)
-{
-    var didMatch = 0;
-    for(var j = 0; j < array.length; j++)
-    {
-        if(suggestedUsersGroupSize[i]?.name == array[j][0]?.name)
-        {
-            array[j][1]++;
-            didMatch = 1;
-            break;
-        }
-    }
-    if(didMatch == 0)
-    {
-        array[arrayIndex] = element(suggestedUsersGroupSize[i], 1);
-        arrayIndex++;
-    }
-    
-}
-console.log(array);
 
-var finalArray = [];
-var finalArrayIndex = 0;
-for(var i = 0; i < array.length; i++)
-{
-    if(array[i][1] >= 3)
-    {
-        finalArray[finalArrayIndex] = array[i][0];
-        finalArrayIndex++;
-    }
-}
+    console.log(array);
 
-console.log(finalArray);
+    for(i = 0; i < suggestedUsersYear?.length; i++)
+    {
+        var didMatch = 0;
+        for(var j = 0; j < array.length; j++)
+        {
+            if(suggestedUsersYear[i]?.name === array[j][0]?.name)
+            {
+                array[j][1]++;
+                didMatch = 1;
+                break;
+            }
+        }
+        if(didMatch === 0)
+        {
+            array[arrayIndex] = element(suggestedUsersYear[i], 1);
+            arrayIndex++;
+        }
+        
+    }
+    for(i = 0; i < suggestedUsersPet?.length; i++)
+    {
+        didMatch = 0;
+        for(j = 0; j < array.length; j++)
+        {
+            if(suggestedUsersPet[i]?.name === array[j][0]?.name)
+            {
+                array[j][1]++;
+                didMatch = 1;
+                break;
+            }
+        }
+        if(didMatch === 0)
+        {
+            array[arrayIndex] = element(suggestedUsersPet[i], 1);
+            arrayIndex++;
+        }
+        
+    }
+    for(i = 0; i < suggestedUsersStudyHour?.length; i++)
+    {
+        didMatch = 0;
+        for(j = 0; j < array.length; j++)
+        {
+            if(suggestedUsersStudyHour[i]?.name === array[j][0]?.name)
+            {
+                array[j][1]++;
+                didMatch = 1;
+                break;
+            }
+        }
+        if(didMatch === 0)
+        {
+            array[arrayIndex] = element(suggestedUsersStudyHour[i], 1);
+            arrayIndex++;
+        }
+        
+    }
+    for(i = 0; i < suggestedUsersGroupSize?.length; i++)
+    {
+        didMatch = 0;
+        for(j = 0; j < array.length; j++)
+        {
+            if(suggestedUsersGroupSize[i]?.name === array[j][0]?.name)
+            {
+                array[j][1]++;
+                didMatch = 1;
+                break;
+            }
+        }
+        if(didMatch === 0)
+        {
+            array[arrayIndex] = element(suggestedUsersGroupSize[i], 1);
+            arrayIndex++;
+        }
+        
+    }
+
+    var finalArray = [];
+    var finalArrayIndex = 0;
+    for(i = 0; i < array.length; i++)
+    {
+        if(array[i][1] >= 3)
+        {
+            finalArray[finalArrayIndex] = array[i][0];
+            finalArrayIndex++;
+        }
+    }
+
 
     return (
         <>
             <div>
                 <p className="suggestionTitle"> Suggestions For You</p>
-
 
                 <div className="suggestionDiv">
                     <p className="titleBoxes"> BEST MATCH </p>

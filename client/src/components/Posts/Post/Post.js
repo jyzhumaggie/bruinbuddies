@@ -20,13 +20,13 @@ const Post = ({ post, setCurrentId }) => {
 
 
     const Likes = () => {
-        if (post.likes.length > 0 ) {
-            return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id )) 
+        if (post?.likes?.length > 0 ) {
+            return post?.likes?.find((like) => like === (user?.result?.googleId || user?.result?._id )) 
             ? (
-                <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}`} </>
+                <><ThumbUpAltIcon fontSize="small" />&nbsp;{post?.likes?.length > 2 ? `You and ${post?.likes?.length - 1} others` : `${post?.likes?.length} like${post?.likes?.length > 1 ? 's' : ''}`} </>
                 
             ) : (
-                <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'} </>
+                <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post?.likes?.length} {post?.likes?.length === 1 ? 'Like' : 'Likes'} </>
                 );
             }
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
@@ -54,7 +54,7 @@ const Post = ({ post, setCurrentId }) => {
                 <Typography className={classes.title}>{post.title}</Typography>
                 <Typography className={classes.message} >{post.message}</Typography>
 
-                <Typography variant="body2" style={{color: "white"}}>{post.tags.map((tag) => `#${tag} `)}</Typography>
+                <Typography variant="body2" style={{color: "white"}}>{post?.tags?.map((tag) => `#${tag} `)}</Typography>
 
             </CardContent>
 
