@@ -4,7 +4,6 @@ import { deepPurple } from '@material-ui/core/colors';
 export default makeStyles((theme) => ({
   appBar: {
     display: 'grid',
-    // flexDirection: 'row',
     gridTemplateColumns: '30% 10% 8% 8% 8% 8% 8% 8%',
     columnGap: '1vw',
     alignItems: 'center',

@@ -1,11 +1,7 @@
-// import "./styles.css";
-// import pic from './pic';
-// import alt from './bruin';
-// import { Platform, StyleSheet, View, Image } from 'react-native';
-import { render } from "react-dom";
+
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
-import { getUsers, updateUser } from '../../actions/users';
+import { getUsers } from '../../actions/users';
 // import image from './image.js'
 import './Profile.css';
 
@@ -20,19 +16,11 @@ const [currentId, setCurrentId] = useState(null);
     dispatch(getUsers());
   }, [dispatch, currentId]); // dependency array
   const user = JSON.parse(localStorage.getItem('profile'));
-  const allUsers = useSelector((state) => state.posts);
-  const thisUser = allUsers.filter( (one) => {
-    if (user?.result?.email === one?.email) {
-        console.log("i am u");
-        return one;
-    } else { 
-        return null;
-    }
-} );
 
-console.log(user?.result);
+
 
 const userHere = user;
+
 console.log(userHere.selectedFile);
   return (
 	  <div>

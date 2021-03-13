@@ -4,11 +4,8 @@ import makeStyles from './styles';
 
 const SuggestedBox = ( suggestedUser ) => {
     const classes = makeStyles();
-
-    console.log(suggestedUser);
-    console.log(suggestedUser.suggestedUser?.name);
     const user = suggestedUser.suggestedUser;
-    // console.log(user?.selectedFile);
+    
     return (
         <Card > 
             

@@ -43,12 +43,8 @@ const PersonalInfo = () => {
 		console.log(formData);
 		dispatch(updateUser(currentId, { ...formData }));
 		
-		// setSubmitting(true);
 		setTimeout(() => {
-			// setSubmitting(false);
-			// setFormData({
-			// 	reset: true
-			// 	})
+
 			},3000);
 			alert('You have submitted the form.')
 	}
@@ -67,16 +63,7 @@ const PersonalInfo = () => {
  
 	return (
 		<div className="wrapper">
-			{/* <h1>Your Profile</h1> */}
-			{/* {submitting &&
-				<div>
-					You are submitting the following:
-					<ul>
-						{Object.entries(formData).map(([name, value]) => (
-							<li key={name}><strong>{name}</strong>:{value.toString()}</li>				       ))}
-					</ul>
-				</div>
-			} */}
+
 			<form onSubmit={handleSubmit}>
 				<fieldset>
 					<p>Upload a display picture</p>

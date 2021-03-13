@@ -11,8 +11,6 @@ import * as api from '../api';
 export const getPosts = () => async (dispatch) => {
     try {
         const { data } = await api.fetchPosts();
-        // const response = await api.fetchPosts(); 
-        //       response always contain data object
         dispatch({ type: FETCH_ALL, payload: data });
     } catch (error) {
         console.log(error.message);

@@ -35,7 +35,6 @@ const Post = ({ post, setCurrentId }) => {
     return ( 
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
-            {/* <img className="profilePic" src={post.selectedFile}/> */}
 
             <div className={classes.overlay2}>
             {(user?.result?.googleId === post?.creater || user?.result?._id === post?.creater) && (
@@ -62,7 +61,6 @@ const Post = ({ post, setCurrentId }) => {
 
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="secondary" disabled={!user?.result} onClick={()=> {dispatch(likePost(post._id))}}>
-                    {/* <ThumbUpAltIcon fontSize="small" /> Like&nbsp; {post.likeCount} */}
                     <Likes />
                 </Button>
                 {(user?.result?.googleId === post?.creater || user?.result?._id === post?.creater) && (

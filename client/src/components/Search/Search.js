@@ -31,27 +31,10 @@ const Search = () => {
             })
         }
     }
-    // console.log(users);
-    // const filterUsers = (users, query) => {
-    //     if (!query) {
-    //         return null;
-    //     } else {
-    //         return users.filter((post) => {
-    //             const userTitle = user?.title?.toLowerCase() + user?.message?.toLowerCase() + user?.name?.toLowerCase();
-    //             return userTitle.includes(query.toLowerCase());
-    //         })
-    //     }
-    // }
-
-    console.log(query);    
-    console.log("query is " + query);
 
     const [searchQuery, setSearchQuery] = useState(query | ' ' );
     const filteredPosts = filterPosts(posts, searchQuery);
     
-
-
-
     return (
         <div>
             <form action="/search" method="get">

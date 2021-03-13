@@ -6,9 +6,7 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true},
     id: { type: String },
     selectedFile: { type: String, required: false},
-
     bio: { type: String, required: false },
-
     major: { type: String, required: false },
     year: { type: String, required: false },
     hobbies: { type: String, required: false },
