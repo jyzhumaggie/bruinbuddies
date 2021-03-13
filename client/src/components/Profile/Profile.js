@@ -10,7 +10,7 @@ import { getUsers, updateUser } from '../../actions/users';
 import './Profile.css';
 
 
-
+//change access to get hobbies separately
 const Profile = () => {
 const dispatch = useDispatch(getUsers());
 const [currentId, setCurrentId] = useState(null);
@@ -54,12 +54,17 @@ console.log(userHere.selectedFile);
 				<h2> Major: </h2>
 				<h2 className="valueFields">{userHere?.result?.major}</h2>
 				
+	//main changes in appearance check with console log
 				<h2>Hobbies:</h2> 
 				<h2 className="valueFields">{userHere?.result?.hobbies}</h2>
 
 					
-				<h2>Are you a cat person or a dog person?:</h2>
+				<h2>Are you a dog person or a cat person?:</h2>
+	
 				<h2 className="valueFields"> {userHere?.result?.catDog} </h2>
+	
+	
+	
 				<h2>Do you prefer to study in the morning or night?:</h2>
 				<h2 className="valueFields">{userHere?.result?.nightOrMorning} </h2>
         		<h2>Do you prefer to study in smaller or larger groups?: </h2>
