@@ -12,7 +12,10 @@
 #### To enter the two separate sub-folders, in two different terminals  
 `cd bruinbuddies/client` and `cd bruinbuddies/server`  
   
-##### To start the application, inside both _bruinbuddies/client_ and _bruinbuddies/server_  
+#### To install node modules and all dependencies  
+`npm install`. 
+
+#### To start the application, inside both _bruinbuddies/client_ and _bruinbuddies/server_  
 `npm start` 
 
 
