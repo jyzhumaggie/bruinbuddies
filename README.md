@@ -15,10 +15,9 @@
 #### To install node modules and all dependencies  
 `npm install`  
 
-#### For the project to work, you would need to create a file named `.env`  
+#### For the project to work, you would need to create a file named `.env` inside the server folder  
 #### Inside of it, you will need to put two lines and fill in the database connection URL of your own  
-`PORT = 5000`  
-`CONNECTION_URL = <REPLACE_ME_WITH_DATABASE_URL>`  
+`PORT = 5000` and `CONNECTION_URL = <REPLACE_ME_WITH_DATABASE_URL>`  
 
 
 #### To start the application, inside both _bruinbuddies/client_ and _bruinbuddies/server_  
